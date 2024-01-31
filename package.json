@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "code": "node ./code-generate/index.js",
+    "lint": "eslint --ext .js . --fix"
+  },
+  "dependencies": {
+    "array-flatten": "^3.0.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "debug": "^4.3.4",
+    "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "finalhandler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "merge-descriptors": "^1.0.3",
+    "methods": "^1.1.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.8.0",
+    "path-to-regexp": "^6.2.1",
+    "redis": "^3.1.2",
+    "sequelize-auto": "^0.8.8",
+    "sq": "^0.0.1",
+    "te": "^0.0.1",
+    "unpipe": "^1.0.0",
+    "ws": "^8.13.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "node-dev": "^7.1.0"
+  }
+}
