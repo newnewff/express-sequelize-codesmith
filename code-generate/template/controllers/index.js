@@ -32,32 +32,37 @@ function deleteList(ids){
     }}});
 }
 exports.list = async function(req,res){
-	const {{tablename}}List = await {{tableNameUpperCase}}DB.findAll({
-	  where: ControllerUtil.DBSplitOP(req.body,db)
-	});
+	let params=req.body;
+ 	if(!req.body.where){
+  		params={where: ControllerUtil.DBSplitOP(req.body,db)}
+  	}
+	const {{tablename}}List = await {{tableNameUpperCase}}DB.findAll(params);
 	res.send({data:{{tablename}}List,status:200,msg:'ok'})
 }
 exports.findOne = async function(req,res){
-	const {{tablename}}List = await {{tableNameUpperCase}}DB.findOne({
-	  where: ControllerUtil.DBSplitOP(req.body,db)
-	});
+	let params=req.body;
+ 	if(!req.body.where){
+  		params={where: ControllerUtil.DBSplitOP(req.body,db)}
+  	}
+	const {{tablename}}List = await {{tableNameUpperCase}}DB.findOne(params);
 	res.send({data:{{tablename}}List,status:200,msg:'ok'})
 }
 exports.findOrCreate = async function(req,res){
-	const [{{tablename}}List,created] = await {{tableNameUpperCase}}DB.findOrCreate({
-	  where: ControllerUtil.DBSplitOP(req.body.where,db),
-	  defaults: req.body.obj
-	});
+	let params=req.body;
+ 	if(!req.body.where){
+  		params={where: ControllerUtil.DBSplitOP(req.body.where,db),defaults: req.body.obj}
+  	}
+	const [{{tablename}}List,created] = await {{tableNameUpperCase}}DB.findOrCreate(params);
 	res.send({data:[{{tablename}}List,created],status:200,msg:'ok'})
 }
 exports.page = async function(req,res){
 	let pageSize = req.body.pageSize ? req.body.pageSize:10;
 	let pageIndex = req.body.pageIndex ? req.body.pageIndex:0;
-
-	const {count,rows} = await {{tableNameUpperCase}}DB.findAndCountAll({
-	  where: ControllerUtil.DBSplitOP(req.body,db),
-	  offset: pageSize*pageIndex, limit: pageSize
-	});
+	let params=req.body;
+ 	if(!req.body.where){
+  		params={where: ControllerUtil.DBSplitOP(req.body,db), offset: pageSize*pageIndex, limit: pageSize}
+  	}
+	const {count,rows} = await {{tableNameUpperCase}}DB.findAndCountAll(params);
 	res.send({data:{count,rows},status:200,msg:'ok'})
 }
 exports.getById = async function(req,res){
